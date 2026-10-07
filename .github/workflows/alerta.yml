@@ -18,5 +18,5 @@ jobs:
       - name: Enviar notificacion a ntfy
         run: |
           curl -H "Title: Nuevo push en main" \
-               -d "Juan Burgos subio cambios a ${{ github.repository }} (commit: ${{ github.event.head_commit.message }})" \
+               -d "Juan Burgos mando la noti desde git" \
                ntfy.sh/devops-itla
