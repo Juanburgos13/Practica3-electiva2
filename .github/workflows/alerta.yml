@@ -1,0 +1,22 @@
+name: Alerta
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Ejecutar Hola Mundo
+        run: node hola.js
+
+      - name: Enviar notificacion a ntfy
+        run: |
+          curl -H "Title: Nuevo push en main" \
+               -d "Juan Burgos subio cambios a ${{ github.repository }} (commit: ${{ github.event.head_commit.message }})" \
+               ntfy.sh/devops-itla
